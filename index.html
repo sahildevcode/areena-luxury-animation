@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AREENA BEAUTY LOOKS — Luxury Beauty Parlour &amp; Bridal Studio</title>
+  
+  <!-- Fonts: Luxury Editorial Serif + Romantic Cursive + Minimalist Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- GSAP & Lucide Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Custom Cursor Follower -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Announcement Bar (Areena Beauty Looks Top Bar) -->
+  <div class="announcement-bar">
+    <div class="announcement-inner">
+      <div class="announcement-item">
+        <span>🏆 Winner of Business Conclave &amp; Excellence Awards 2024 &nbsp;|&nbsp; Book Your Bridal Dates Early</span>
+      </div>
+      <div class="announcement-item announcement-quote">
+        <span>Areena Beauty Looks — Timeless Radiance, Always Yours</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Luxury Navigation Header -->
+  <header class="site-header" id="mainHeader">
+    <div class="header-inner">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo magnetic-target">
+        <span class="logo-text">AREENA BEAUTY LOOKS</span>
+        <span class="logo-subtext">LUXURY SALON &amp; BRIDAL STUDIO</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li class="nav-dropdown">
+            <a href="#categories" class="nav-link has-dropdown">
+              Services <i data-lucide="chevron-down" class="dropdown-chevron"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#bestsellers" onclick="filterCategory('all')">All Salon Services</a>
+              <a href="#bestsellers" onclick="filterCategory('bridal')">Bridal HD &amp; Reception Makeup</a>
+              <a href="#bestsellers" onclick="filterCategory('hair')">Bridal Hair &amp; Floral Bun</a>
+              <a href="#bestsellers" onclick="filterCategory('facials')">Hydra Facials &amp; Cleanup</a>
+              <a href="#bestsellers" onclick="filterCategory('nails')">Nail Extensions &amp; Pedicure</a>
+              <a href="#special-moments">Pre-Bridal Packages</a>
+            </div>
+          </li>
+          <li><a href="#categories" class="nav-link">Bridal Gallery</a></li>
+          <li><a href="#our-story" class="nav-link">About Areena</a></li>
+          <li><a href="#testimonials" class="nav-link">Client Reviews</a></li>
+          <li><a href="#footer" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Icons: Search, Account, Wishlist, Appointment Bag -->
+      <div class="header-actions">
+        <button class="header-icon-btn magnetic-target" id="searchTriggerBtn" title="Search services">
+          <i data-lucide="search"></i>
+        </button>
+        <button class="header-icon-btn magnetic-target" id="accountTriggerBtn" title="My Account">
+          <i data-lucide="user"></i>
+        </button>
+        <button class="header-icon-btn magnetic-target" id="wishlistTriggerBtn" title="Saved Looks">
+          <i data-lucide="heart"></i>
+        </button>
+        <button class="cart-btn magnetic-target" id="cartTriggerBtn" title="Selected Services">
+          <i data-lucide="calendar"></i>
+          <span class="cart-count-badge" id="cartCount">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Ambient Sound Controller -->
+  <div class="audio-control-bar">
+    <button class="sound-toggle-btn magnetic-target" id="soundToggle" title="Toggle Sanctuary Ambience">
+      <i data-lucide="volume-x" id="soundIcon"></i>
+      <span class="sound-text">Ambient Sound</span>
+      <div class="sound-wave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- ==========================================================================
+       SECTION 1: THE FRONT PAGE (CARING ABOUT YOU)
+       Kept 100% identical with opening animation, text reveal, mouse parallax,
+       and magnetic divider button!
+       ========================================================================== -->
+  <section class="caring-hero-section" id="hero">
+    <div class="hero-split-grid">
+      
+      <!-- Left Column: Expanding Spa Imagery -->
+      <div class="media-column">
+        <div class="image-reveal-wrapper" id="heroImageWrapper">
+          <div class="curtain-overlay" id="curtainOverlay"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1600&q=85" 
+            alt="Luxury facial massage and skincare therapy" 
+            class="hero-media-img"
+            id="heroImage"
+          />
+          <div class="media-glow-tag">
+            <span class="pulse-dot"></span>
+            <span>Signature Facial Therapy • Areena Suite</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Magnetic Interactive Divider Button -->
+      <div class="center-interactive-seam" id="centerSeam">
+        <button class="center-cursor-btn magnetic-target" id="centerCursorBtn" title="Interactive Divider Button">
+          <span class="btn-dot"></span>
+          <span class="btn-pulse-ring"></span>
+          <span class="btn-tooltip">Explore Balance</span>
+        </button>
+      </div>
+
+      <!-- Right Column: Editorial Staggered Typography -->
+      <div class="content-column">
+        <div class="content-wrapper">
+          <div class="subtitle-reveal">
+            <span class="line-mask"><span class="reveal-inner">WELLNESS &amp; CELLULAR HARMONY</span></span>
+          </div>
+
+          <!-- Staggered Headline -->
+          <h1 class="editorial-headline" id="editorialHeadline">
+            <div class="headline-row">
+              <span class="line-mask">
+                <span class="word-accent word-red reveal-inner">CARING</span>
+              </span>
+            </div>
+            <div class="headline-row offset-right">
+              <span class="line-mask">
+                <span class="word-dark reveal-inner">ABOUT</span>
+              </span>
+            </div>
+            <div class="headline-row">
+              <span class="line-mask">
+                <span class="word-accent word-red-italic reveal-inner">YOU</span>
+              </span>
+              <span class="line-mask subtitle-descriptor">
+                <span class="reveal-inner descriptor-text">A modern parlour sanctuary dedicated to non-invasive holistic rejuvenation, tranquil mindsets, and cellular radiance.</span>
+              </span>
+            </div>
+          </h1>
+
+          <div class="hero-actions-row">
+            <div class="line-mask">
+              <div class="reveal-inner actions-content">
+                <a href="#areena-hero" class="explore-btn magnetic-target" id="exploreRitualsBtn">
+                  <span class="explore-btn-circle">
+                    <i data-lucide="arrow-down"></i>
+                  </span>
+                  <span class="explore-btn-text">Explore Areena Looks</span>
+                </a>
+                
+                <div class="curated-stat">
+                  <span class="stat-number">98.6%</span>
+                  <span class="stat-label">Client Bliss Score</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator Prompt -->
+        <a href="#areena-hero" class="scroll-prompt-bar">
+          <span class="scroll-label">Scroll down to explore Areena Beauty Looks</span>
+          <div class="scroll-track">
+            <div class="scroll-thumb"></div>
+          </div>
+          <span class="slide-counter">Scroll <i data-lucide="chevron-down" style="width:14px;height:14px;display:inline-block;vertical-align:middle;"></i></span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Floating Parallax Micro-Cards -->
+    <div class="floating-parallax-container" id="parallaxContainer">
+      <div class="float-item float-item-1" data-speed="0.04" data-tilt="12">
+        <div class="float-card glass-card">
+          <img src="images/areena/areena-bridal-closeup.jpg" alt="Areena Bridal Glow" class="float-thumb">
+          <div class="float-caption">
+            <strong>Areena Glow</strong>
+            <span>Bridal HD Magic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-item float-item-2" data-speed="-0.035" data-tilt="-10">
+        <div class="float-card glass-card">
+          <img src="images/areena/areena-bridal-hair.jpg" alt="Rose Bridal Hair Bun" class="float-thumb">
+          <div class="float-badge">
+            <i data-lucide="sparkles"></i>
+            <span>Rose Bun</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-item float-item-3" data-speed="0.05" data-tilt="8">
+        <div class="float-badge-card glass-card">
+          <div class="star-rating">
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+          </div>
+          <span class="rating-quote">"Transcendent relaxation."</span>
+          <span class="client-author">— Éléonore V., Paris</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: AREENA BEAUTY LOOKS HERO SECTION (FEATURING CROPPED REAL WORK)
+       ========================================================================== -->
+  <section class="aurelia-hero-section reveal-on-scroll" id="areena-hero">
+    <div class="container aurelia-hero-inner">
+      
+      <!-- Left Content -->
+      <div class="aurelia-hero-left">
+        <span class="aurelia-tagline-small">ELEGANCE &amp; GLOW LIVED FOREVER</span>
+        
+        <h2 class="aurelia-hero-title">
+          Beauty<br>
+          That Tells<br>
+          Your Story
+        </h2>
+
+        <p class="aurelia-hero-desc">
+          Celebrity-awarded bridal transformations, couture floral hairstyles, and radiant party makeovers crafted with passion by <strong>Areena Beauty Looks</strong>.
+        </p>
+
+        <a href="#bestsellers" class="aurelia-gold-btn magnetic-target">
+          <span>BOOK APPOINTMENT</span>
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Right Visual (Cropped Real Work of Areena: Bridal Close-Up) -->
+      <div class="aurelia-hero-right">
+        <div class="aurelia-model-frame">
+          <img 
+            src="images/areena/areena-bridal-closeup.jpg" 
+            alt="Real bride by Areena Beauty Looks with traditional nath and radiant HD makeup" 
+            class="aurelia-model-img"
+          />
+          
+          <!-- Cursive Callout Badge on Real Work -->
+          <div class="aurelia-cursive-callout">
+            <span class="cursive-line1">Areena</span>
+            <span class="cursive-line2">Signature Glow</span>
+            <span class="cursive-line3">Loved by Brides ♡</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 4 Value Features Bar (Areena Credentials) -->
+    <div class="aurelia-values-bar">
+      <div class="container values-bar-grid">
+        <div class="value-item">
+          <div class="value-icon"><i data-lucide="award"></i></div>
+          <div class="value-info">
+            <strong>Award-Winning 2024</strong>
+            <span>Excellence Conclave Winner</span>
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-icon"><i data-lucide="sparkles"></i></div>
+          <div class="value-info">
+            <strong>1000+ Happy Brides</strong>
+            <span>Signature bridal mastery</span>
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-icon"><i data-lucide="leaf"></i></div>
+          <div class="value-info">
+            <strong>100% Premium Products</strong>
+            <span>MAC, Huda, Dior &amp; NARS</span>
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-icon"><i data-lucide="shield-check"></i></div>
+          <div class="value-info">
+            <strong>Sanitized &amp; Hygienic</strong>
+            <span>Private luxury parlour suites</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: SHOP BY CATEGORY — FIND YOUR PERFECT TREATMENT
+       ========================================================================== -->
+  <section class="aurelia-categories-section reveal-on-scroll" id="categories">
+    <div class="container">
+      
+      <div class="center-section-header">
+        <span class="section-tag-gold">EXPLORE SERVICES</span>
+        <h2 class="section-heading-serif">Find Your Perfect Look</h2>
+        <p class="section-subtext">Explore our signature bridal &amp; parlour services tailored for your grand occasions.</p>
+      </div>
+
+      <!-- 7 Circular Categories Grid (With Areena Real Work) -->
+      <div class="circular-categories-grid">
+        
+        <!-- 1. Bridal HD Makeup -->
+        <a href="#bestsellers" class="circle-cat-card magnetic-target" onclick="filterCategory('bridal')">
+          <div class="circle-img-wrap">
+            <img src="images/areena/areena-bridal-closeup.jpg" alt="Bridal HD Makeup">
+          </div>
+          <span class="circle-cat-title">Bridal HD Makeup</span>
+        </a>
+
+        <!-- 2. Hair Styling & Floral Bun -->
+        <a href="#bestsellers" class="circle-cat-card magnetic-target" onclick="filterCategory('hair')">
+          <div class="circle-img-wrap">
+            <img src="images/areena/areena-bridal-hair.jpg" alt="Rose Bridal Bun Styling">
+          </div>
+          <span class="circle-cat-title">Floral Hair Bun</span>
+        </a>
+
+        <!-- 3. Reception & Engagement Glam -->
+        <a href="#bestsellers" class="circle-cat-card magnetic-target" onclick="filterCategory('bridal')">
+          <div class="circle-img-wrap">
+            <img src="images/areena/areena-golden-lehenga.jpg" alt="Reception Golden Glam">
+          </div>
+          <span class="circle-cat-title">Reception Glam</span>
+        </a>
+
+        <!-- 4. Royal Traditional Makeover -->
+        <a href="#bestsellers" class="circle-cat-card magnetic-target" onclick="filterCategory('bridal')">
+          <div class="circle-img-wrap">
+            <img src="images/areena/areena-royal-bride.jpg" alt="Royal Traditional Bride">
+          </div>
+          <span class="circle-cat-title">Royal Bridal</span>
+        </a>
+
+        <!-- 5. Hydra Facials & Cleanup -->
+        <a href="#bestsellers" class="circle-cat-card magnetic-target" onclick="filterCategory('facials')">
+          <div class="circle-img-wrap">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&q=80" alt="Hydra Facial">
+          </div>
+          <span class="circle-cat-title">Facials &amp; Glow</span>
+        </a>
+
+        <!-- 6. Nail Extensions & Art -->
+        <a href="#bestsellers" class="circle-cat-card magnetic-target" onclick="filterCategory('nails')">
+          <div class="circle-img-wrap">
+            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=400&q=80" alt="Gel Nail Art">
+          </div>
+          <span class="circle-cat-title">Nail Art &amp; Gel</span>
+        </a>
+
+        <!-- 7. Pre-Bridal Packages -->
+        <a href="#special-moments" class="circle-cat-card magnetic-target">
+          <div class="circle-img-wrap">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Pre-Bridal Packages">
+          </div>
+          <span class="circle-cat-title">Pre-Bridal Spa</span>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: BESTSELLERS — AREENA'S MOST LOVED MAKEOVERS
+       ========================================================================== -->
+  <section class="aurelia-bestsellers-section reveal-on-scroll" id="bestsellers">
+    <div class="container">
+      
+      <div class="bestsellers-header-row">
+        <div class="header-titles">
+          <span class="section-tag-gold">MOST POPULAR SERVICES</span>
+          <h2 class="section-heading-serif">Our Most Loved Packages</h2>
+          <p class="section-subtext">Award-winning beauty &amp; bridal packages chosen by brides across India.</p>
+        </div>
+        <button class="view-all-link-btn magnetic-target" onclick="filterCategory('all')">
+          <span>View all services</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="bestsellers-products-grid" id="productsGrid">
+        
+        <!-- Package 1: Signature Bridal HD Makeover (Real Areena Work) -->
+        <div class="luxury-product-card" data-category="bridal">
+          <div class="product-thumb-container">
+            <button class="wishlist-btn magnetic-target" title="Save look" onclick="toggleWishlist(this, 'Signature Bridal HD Makeover')">
+              <i data-lucide="heart"></i>
+            </button>
+            <img src="images/areena/areena-bridal-closeup.jpg" alt="Signature Bridal HD Makeover by Areena">
+          </div>
+          <div class="product-details-box">
+            <h3 class="product-name">Signature Bridal HD Makeover</h3>
+            <div class="product-stars-row">
+              <div class="stars-gold">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+              </div>
+              <span class="review-count">(350+ Brides • 3.5 Hours)</span>
+            </div>
+            <div class="product-price-line">
+              <span class="current-price">₹14,999</span>
+              <span class="strikethrough-price">₹21,000</span>
+            </div>
+            <button class="gold-add-cart-btn magnetic-target" onclick="addToCart({id: 'areena-bridal-hd', name: 'Signature Bridal HD Makeover', price: 14999, image: 'images/areena/areena-bridal-closeup.jpg'})">
+              BOOK BRIDAL SLOT
+            </button>
+          </div>
+        </div>
+
+        <!-- Package 2: Royal Bridal Rose Floral Bun (Real Areena Work) -->
+        <div class="luxury-product-card" data-category="hair">
+          <div class="product-thumb-container">
+            <button class="wishlist-btn magnetic-target" title="Save look" onclick="toggleWishlist(this, 'Royal Rose Bridal Hair Bun')">
+              <i data-lucide="heart"></i>
+            </button>
+            <img src="images/areena/areena-bridal-hair.jpg" alt="Rose Bridal Bun Styling by Areena">
+          </div>
+          <div class="product-details-box">
+            <h3 class="product-name">Royal Rose Bridal Hair Bun</h3>
+            <div class="product-stars-row">
+              <div class="stars-gold">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+              </div>
+              <span class="review-count">(190 reviews • 90 Min)</span>
+            </div>
+            <div class="product-price-line">
+              <span class="current-price">₹4,499</span>
+              <span class="strikethrough-price">₹6,500</span>
+            </div>
+            <button class="gold-add-cart-btn magnetic-target" onclick="addToCart({id: 'areena-rose-bun', name: 'Royal Rose Bridal Hair Bun', price: 4499, image: 'images/areena/areena-bridal-hair.jpg'})">
+              BOOK HAIR SESSION
+            </button>
+          </div>
+        </div>
+
+        <!-- Package 3: Golden Reception & Cocktail Glam (Real Areena Work) -->
+        <div class="luxury-product-card" data-category="bridal">
+          <div class="product-thumb-container">
+            <button class="wishlist-btn magnetic-target" title="Save look" onclick="toggleWishlist(this, 'Golden Reception & Cocktail Glam')">
+              <i data-lucide="heart"></i>
+            </button>
+            <img src="images/areena/areena-golden-lehenga.jpg" alt="Golden Reception &amp; Cocktail Glam by Areena">
+          </div>
+          <div class="product-details-box">
+            <h3 class="product-name">Golden Reception Glam</h3>
+            <div class="product-stars-row">
+              <div class="stars-gold">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+              </div>
+              <span class="review-count">(215 reviews • 2.5 Hours)</span>
+            </div>
+            <div class="product-price-line">
+              <span class="current-price">₹9,999</span>
+              <span class="strikethrough-price">₹14,000</span>
+            </div>
+            <button class="gold-add-cart-btn magnetic-target" onclick="addToCart({id: 'areena-reception', name: 'Golden Reception Glam Look', price: 9999, image: 'images/areena/areena-golden-lehenga.jpg'})">
+              BOOK RECEPTION GLAM
+            </button>
+          </div>
+        </div>
+
+        <!-- Package 4: Royal Traditional Bridal Makeover (Real Areena Work) -->
+        <div class="luxury-product-card" data-category="bridal">
+          <div class="product-thumb-container">
+            <button class="wishlist-btn magnetic-target" title="Save look" onclick="toggleWishlist(this, 'Royal Traditional Bridal Makeover')">
+              <i data-lucide="heart"></i>
+            </button>
+            <img src="images/areena/areena-royal-bride.jpg" alt="Royal Traditional Bridal Makeover by Areena">
+          </div>
+          <div class="product-details-box">
+            <h3 class="product-name">Royal Heritage Bridal Look</h3>
+            <div class="product-stars-row">
+              <div class="stars-gold">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+              </div>
+              <span class="review-count">(280 reviews • 4 Hours)</span>
+            </div>
+            <div class="product-price-line">
+              <span class="current-price">₹18,499</span>
+              <span class="strikethrough-price">₹25,000</span>
+            </div>
+            <button class="gold-add-cart-btn magnetic-target" onclick="addToCart({id: 'areena-heritage-bride', name: 'Royal Heritage Bridal Look', price: 18499, image: 'images/areena/areena-royal-bride.jpg'})">
+              BOOK HERITAGE BRIDE
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: DUAL EDITORIAL SPLIT BANNERS (WITH AREENA REAL WORK)
+       ========================================================================== -->
+  <section class="aurelia-split-banners-section reveal-on-scroll" id="special-moments">
+    <div class="split-banners-grid">
+      
+      <!-- Banner 1: Crafted for Bridal Special Moments (Royal Bride) -->
+      <div class="editorial-banner-block banner-left">
+        <div class="banner-img-bg">
+          <img src="images/areena/areena-royal-bride.jpg" alt="Areena Beauty Looks Royal Bride in Red Velvet Lehenga">
+        </div>
+        <div class="banner-overlay-content">
+          <h3 class="banner-headline">Crafted<br>for Bridal<br>Special Moments</h3>
+          <a href="#bestsellers" class="banner-cta-link magnetic-target" onclick="filterCategory('bridal')">
+            <span>EXPLORE BRIDAL SUITE</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Banner 2: A Glow That Lasts Forever (Golden Glam) -->
+      <div class="editorial-banner-block banner-right">
+        <div class="banner-img-bg">
+          <img src="images/areena/areena-golden-lehenga.jpg" alt="Areena Beauty Looks Golden Reception Glamour">
+        </div>
+        <div class="banner-overlay-content">
+          <h3 class="banner-headline">A Glow<br>That Lasts<br>Forever</h3>
+          <a href="#bestsellers" class="banner-cta-link magnetic-target" onclick="filterCategory('bridal')">
+            <span>BOOK RECEPTION LOOK</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: TRUST & QUALITY STRIP
+       ========================================================================== -->
+  <section class="aurelia-trust-strip reveal-on-scroll">
+    <div class="container trust-strip-grid">
+      <div class="trust-item">
+        <i data-lucide="award"></i>
+        <strong>Business Conclave Award 2024</strong>
+        <span>Celebrity honored artistry</span>
+      </div>
+      <div class="trust-item">
+        <i data-lucide="sparkles"></i>
+        <strong>1000+ Verified Brides</strong>
+        <span>Unmatched bridal reputation</span>
+      </div>
+      <div class="trust-item">
+        <i data-lucide="shield-check"></i>
+        <strong>100% Sanitized Tools</strong>
+        <span>Medical-grade hygiene</span>
+      </div>
+      <div class="trust-item">
+        <i data-lucide="heart"></i>
+        <strong>Personalized Care</strong>
+        <span>Customized skin &amp; hair rituals</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: OUR STORY — CELEBRITY AWARDED ARTISTRY (WITH REAL AWARD PHOTO!)
+       ========================================================================== -->
+  <section class="aurelia-story-section reveal-on-scroll" id="our-story">
+    <div class="container story-inner-grid">
+      
+      <!-- Left Narrative -->
+      <div class="story-left-col">
+        <span class="section-tag-gold">OUR STORY &amp; RECOGNITION</span>
+        <h2 class="section-heading-serif">Award-Winning Mastery<br>at Areena Beauty Looks</h2>
+        <p class="story-paragraph">
+          Proud recipient of the prestigious <strong>Business Conclave &amp; Excellence Awards 2024</strong>, presented by celebrity guest <strong>Sneha Ullal</strong>. At Areena Beauty Looks, we blend modern luxury aesthetics with traditional grace to turn every bride's dream into a timeless masterpiece.
+        </p>
+        <a href="#footer" class="aurelia-gold-btn magnetic-target">
+          <span>MEET AREENA ARTISTS</span>
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Center: Arched Frame of Real Award Presentation with Sneha Ullal! -->
+      <div class="story-center-col">
+        <div class="arched-artisan-frame">
+          <img 
+            src="images/areena/areena-award-2024.jpg" 
+            alt="Areena Beauty Looks receiving Excellence Award 2024 from celebrity Sneha Ullal" 
+            class="artisan-img"
+          />
+        </div>
+      </div>
+
+      <!-- Right: Circular Artisan Seal & Handwriting -->
+      <div class="story-right-col">
+        <div class="artisan-seal-badge">
+          <div class="circular-seal-text">
+            <span>EXCELLENCE AWARD</span>
+            <strong>AREENA</strong>
+            <small>EST. 2019</small>
+          </div>
+        </div>
+        <div class="handcrafted-script-note">
+          <span>Award Winner</span>
+          <span>With Love ♡</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 8: WHAT OUR BRIDES SAY — LOVED BY THOUSANDS
+       ========================================================================== -->
+  <section class="aurelia-testimonials-section reveal-on-scroll" id="testimonials">
+    <div class="container">
+      
+      <div class="testimonials-header-row">
+        <div>
+          <span class="section-tag-gold">REAL BRIDAL REVIEWS</span>
+          <h2 class="section-heading-serif">Loved by Thousands</h2>
+        </div>
+        <div class="slider-arrows">
+          <button class="arrow-circle-btn magnetic-target" onclick="prevTestimonial()"><i data-lucide="chevron-left"></i></button>
+          <button class="arrow-circle-btn magnetic-target" onclick="nextTestimonial()"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div class="testimonials-cards-grid">
+        <!-- Review 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-user-row">
+            <img src="images/areena/areena-bridal-closeup.jpg" alt="Pooja Sharma" class="user-avatar">
+            <div class="user-meta">
+              <strong>Pooja Sharma</strong>
+              <span class="verified-tag"><i data-lucide="check"></i> Verified Areena Bride</span>
+            </div>
+          </div>
+          <div class="stars-gold"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+          <p class="testimonial-quote">"Areena Beauty Looks gave me the exact royal look I always imagined. The HD base didn't budge all night and my family was stunned!"</p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-user-row">
+            <img src="images/areena/areena-bridal-hair.jpg" alt="Meera Rathi" class="user-avatar">
+            <div class="user-meta">
+              <strong>Meera Rathi</strong>
+              <span class="verified-tag"><i data-lucide="check"></i> Hair &amp; Makeup Client</span>
+            </div>
+          </div>
+          <div class="stars-gold"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+          <p class="testimonial-quote">"The floral rose bun and dupatta draping was perfection! The team at Areena is so patient, professional, and genuinely skilled."</p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-user-row">
+            <img src="images/areena/areena-golden-lehenga.jpg" alt="Simran Kaur" class="user-avatar">
+            <div class="user-meta">
+              <strong>Simran Kaur</strong>
+              <span class="verified-tag"><i data-lucide="check"></i> Reception Makeover</span>
+            </div>
+          </div>
+          <div class="stars-gold"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+          <p class="testimonial-quote">"Booked my cocktail and reception look with Areena Beauty Looks. The dewy shimmer and smoky eye look got me endless compliments!"</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 9: FOLLOW US @AREENABEAUTYLOOKS — INSTAGRAM COMMUNITY
+       ========================================================================== -->
+  <section class="aurelia-insta-section reveal-on-scroll">
+    <div class="container">
+      
+      <div class="insta-header-row">
+        <div>
+          <span class="section-tag-gold">FOLLOW US @AREENABEAUTYLOOKS</span>
+          <h2 class="section-heading-serif">Join Our Radiant Community</h2>
+        </div>
+        <a href="#instagram" class="view-all-link-btn magnetic-target">
+          <span>View on Instagram</span>
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 6-Image Instagram Grid With All Real Work of Areena! -->
+      <div class="insta-photos-grid">
+        <div class="insta-photo-box magnetic-target">
+          <img src="images/areena/areena-bridal-closeup.jpg" alt="Areena Bridal Makeup">
+          <div class="insta-hover-overlay"><i data-lucide="instagram"></i></div>
+        </div>
+        <div class="insta-photo-box magnetic-target">
+          <img src="images/areena/areena-bridal-hair.jpg" alt="Areena Rose Hair Bun">
+          <div class="insta-hover-overlay"><i data-lucide="instagram"></i></div>
+        </div>
+        <div class="insta-photo-box magnetic-target">
+          <img src="images/areena/areena-golden-lehenga.jpg" alt="Areena Golden Lehenga Reception">
+          <div class="insta-hover-overlay"><i data-lucide="instagram"></i></div>
+        </div>
+        <div class="insta-photo-box magnetic-target">
+          <img src="images/areena/areena-royal-bride.jpg" alt="Areena Royal Bride">
+          <div class="insta-hover-overlay"><i data-lucide="instagram"></i></div>
+        </div>
+        <div class="insta-photo-box magnetic-target">
+          <img src="images/areena/areena-award-2024.jpg" alt="Areena Excellence Award 2024">
+          <div class="insta-hover-overlay"><i data-lucide="instagram"></i></div>
+        </div>
+        <div class="insta-photo-box magnetic-target">
+          <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=500&q=80" alt="Rose pedicure and spa">
+          <div class="insta-hover-overlay"><i data-lucide="instagram"></i></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 10: GET 15% OFF NEWSLETTER BANNER
+       ========================================================================== -->
+  <section class="aurelia-newsletter-section reveal-on-scroll">
+    <div class="container newsletter-banner-card">
+      <div class="newsletter-left-col">
+        <h3 class="newsletter-heading">Get 15% OFF Your First Makeover</h3>
+        <p class="newsletter-sub">Join Areena Beauty Looks VIP Club to receive early bridal booking discounts, seasonal pre-bridal offers, and personalized skin guides.</p>
+        <form class="aurelia-subscribe-form" onsubmit="event.preventDefault(); submitNewsletter();">
+          <input type="email" placeholder="Enter your email address" required class="subscribe-input" id="newsletterInput">
+          <button type="submit" class="gold-submit-btn magnetic-target">CLAIM DISCOUNT</button>
+        </form>
+      </div>
+
+      <div class="newsletter-right-col">
+        <div class="newsletter-gift-wrapper">
+          <img src="images/areena/areena-bridal-closeup.jpg" alt="Areena Beauty Gift" class="newsletter-gift-img">
+          <div class="newsletter-script-text">
+            <span>A Brighter</span>
+            <span>Glow</span>
+            <span>Together ♡</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 11: AREENA BEAUTY LOOKS FOOTER
+       ========================================================================== -->
+  <footer class="aurelia-footer" id="footer">
+    <div class="container footer-content-grid">
+      
+      <!-- Brand Bio -->
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <span>AREENA BEAUTY LOOKS</span>
+          <small>LUXURY SALON &amp; BRIDAL STUDIO</small>
+        </div>
+        <p class="footer-tagline">Celebrity-awarded beauty parlour &amp; bridal studio crafting timeless elegance and breathtaking makeovers.</p>
+        <div class="footer-social-row">
+          <a href="#instagram" class="social-circle-link magnetic-target" title="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#facebook" class="social-circle-link magnetic-target" title="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#pinterest" class="social-circle-link magnetic-target" title="Pinterest"><i data-lucide="pin"></i></a>
+          <a href="#youtube" class="social-circle-link magnetic-target" title="YouTube"><i data-lucide="youtube"></i></a>
+          <a href="#tiktok" class="social-circle-link magnetic-target" title="TikTok"><i data-lucide="music-2"></i></a>
+        </div>
+      </div>
+
+      <!-- Services Column -->
+      <div class="footer-nav-col">
+        <h4 class="footer-nav-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="#bestsellers" onclick="filterCategory('bridal')">Signature Bridal HD Makeup</a></li>
+          <li><a href="#bestsellers" onclick="filterCategory('hair')">Royal Rose Bridal Bun</a></li>
+          <li><a href="#bestsellers" onclick="filterCategory('bridal')">Golden Reception Glam</a></li>
+          <li><a href="#bestsellers" onclick="filterCategory('bridal')">Royal Heritage Look</a></li>
+          <li><a href="#bestsellers" onclick="filterCategory('facials')">Hydra Facials &amp; Glow</a></li>
+          <li><a href="#special-moments">Pre-Bridal Packages</a></li>
+        </ul>
+      </div>
+
+      <!-- About Us Column -->
+      <div class="footer-nav-col">
+        <h4 class="footer-nav-heading">About Us</h4>
+        <ul class="footer-links">
+          <li><a href="#our-story">Excellence Awards 2024</a></li>
+          <li><a href="#our-story">Our Story &amp; Philosophy</a></li>
+          <li><a href="#our-story">Master Stylists &amp; Artists</a></li>
+          <li><a href="#testimonials">Client Testimonials</a></li>
+          <li><a href="#footer">Contact &amp; Bookings</a></li>
+        </ul>
+      </div>
+
+      <!-- Salon Timings & Booking Column -->
+      <div class="footer-nav-col">
+        <h4 class="footer-nav-heading">Studio Timings</h4>
+        <ul class="footer-links">
+          <li><span style="color:var(--color-dark);font-weight:600;">Mon - Sat:</span> 9:00 AM – 8:30 PM</li>
+          <li><span style="color:var(--color-dark);font-weight:600;">Sunday:</span> 10:00 AM – 7:30 PM</li>
+          <li style="margin-top:12px;"><a href="tel:+15550192834" style="color:var(--color-gold);font-weight:600;"><i data-lucide="phone" style="width:13px;height:13px;display:inline-block;vertical-align:middle;"></i> +1 (555) 019-2834</a></li>
+          <li><a href="#hero" onclick="openCartDrawer();" style="color:var(--color-gold);font-weight:600;">Book Priority Appointment</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="footer-bottom-strip">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 Areena Beauty Looks. All rights reserved.</span>
+        <span>Made with ♡ for every beautiful bride.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       INTERACTIVE APPOINTMENT SLIDE-OVER DRAWER
+       ========================================================================== -->
+  <div class="cart-drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title">
+        <i data-lucide="calendar"></i>
+        <h3>Selected Areena Services</h3>
+        <span class="cart-items-badge" id="cartDrawerBadge">0</span>
+      </div>
+      <button class="cart-close-btn magnetic-target" onclick="closeCartDrawer()" title="Close drawer">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <!-- Cart Items List -->
+    <div class="cart-items-container" id="cartItemsList">
+      <div class="empty-cart-view" id="emptyCartView">
+        <div class="empty-cart-icon">🌸</div>
+        <h4>No services selected yet</h4>
+        <p>Choose from Areena's signature Bridal HD makeovers, royal floral hair styling, or reception glam packages.</p>
+        <button class="gold-shop-btn magnetic-target" onclick="closeCartDrawer(); window.location.href='#bestsellers';">
+          Browse Signature Makeovers
+        </button>
+      </div>
+    </div>
+
+    <!-- Cart Footer & Booking Confirmation -->
+    <div class="cart-drawer-footer" id="cartFooter">
+      <div class="cart-summary-row">
+        <span>Estimated Total</span>
+        <span class="cart-subtotal-price" id="cartSubtotal">₹0</span>
+      </div>
+      <p class="shipping-hint-text">
+        <i data-lucide="sparkles" style="width:13px;height:13px;"></i>
+        Complimentary bridal consultation &amp; skin testing included
+      </p>
+      <button class="checkout-btn magnetic-target" onclick="handleCheckout()">
+        <span>Confirm Appointment Reservation</span>
+        <i data-lucide="arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Search Modal -->
+  <div class="search-modal-backdrop" id="searchModal">
+    <div class="search-modal-box">
+      <div class="search-input-wrap">
+        <i data-lucide="search"></i>
+        <input type="text" id="searchInput" placeholder="Search bridal makeup, rose hair bun, reception glam, hydra facials..." autofocus>
+        <button class="search-close-btn" onclick="toggleSearchModal(false)"><i data-lucide="x"></i></button>
+      </div>
+      <div class="quick-search-tags">
+        <span>Popular:</span>
+        <button onclick="applySearchTag('bridal')">Bridal HD Makeup</button>
+        <button onclick="applySearchTag('hair')">Floral Rose Bun</button>
+        <button onclick="applySearchTag('bridal')">Reception Glam</button>
+        <button onclick="applySearchTag('facials')">Hydra Facial</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Message -->
+  <div class="toast-message" id="toastMessage"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
