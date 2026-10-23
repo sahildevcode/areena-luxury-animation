@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // State Management
-  let cart = JSON.parse(localStorage.getItem('areena_beauty_services')) || [];
+  let cart = JSON.parse(localStorage.getItem('arina_beauty_services')) || [];
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let targetMouseX = mouseX;
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileCartCount) mobileCartCount.textContent = totalCount;
     if (cartSubtotal) cartSubtotal.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
 
-    localStorage.setItem('areena_beauty_services', JSON.stringify(cart));
+    localStorage.setItem('arina_beauty_services', JSON.stringify(cart));
     renderCartItems();
   }
 

@@ -26,6 +26,7 @@
   --font-serif: 'Italiana', 'Cinzel', 'Playfair Display', serif;
   --font-serif-heading: 'Cinzel', 'Playfair Display', serif;
   --font-serif-body: 'Cormorant Garamond', serif;
+  --font-brand-logo: 'Italiana', 'Marcellus', 'Cinzel', serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-cursive: 'Caveat', 'Alex Brush', cursive;
 
@@ -165,19 +166,33 @@ body {
 }
 
 .logo-text {
-  font-family: var(--font-serif-heading);
-  font-size: 25px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-family: var(--font-brand-logo);
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   color: var(--color-dark);
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #1A1816 0%, #2D2723 55%, #B38E46 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  line-height: 1.15;
+  transition: letter-spacing 0.3s ease, filter 0.3s ease;
+}
+
+.brand-logo:hover .logo-text {
+  letter-spacing: 0.2em;
+  filter: drop-shadow(0 2px 8px rgba(197, 160, 89, 0.25));
 }
 
 .logo-subtext {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 8.5px;
-  font-weight: 600;
-  letter-spacing: 0.28em;
+  font-weight: 700;
+  letter-spacing: 0.32em;
   color: var(--color-gold);
-  margin-top: -2px;
+  margin-top: 1px;
+  text-transform: uppercase;
 }
 
 .main-nav {
@@ -2643,11 +2658,15 @@ section[id], section {
 }
 
 .mobile-brand-title {
-  font-family: var(--font-serif-heading);
-  font-size: 16px;
+  font-family: var(--font-brand-logo);
+  font-size: 17px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--color-dark);
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #1A1816 0%, #B38E46 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .mobile-brand-subtitle {
@@ -3042,8 +3061,9 @@ section[id], section {
     margin: 0 4px;
   }
   .logo-text {
-    font-size: 15px !important;
-    letter-spacing: 0.05em !important;
+    font-family: var(--font-brand-logo);
+    font-size: 16px !important;
+    letter-spacing: 0.08em !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -3051,7 +3071,7 @@ section[id], section {
   }
   .logo-subtext {
     font-size: 6.5px !important;
-    letter-spacing: 0.12em !important;
+    letter-spacing: 0.16em !important;
     white-space: nowrap;
   }
   .header-actions {
