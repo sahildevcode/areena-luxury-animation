@@ -15,7 +15,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="styles.css?v=3.0">
+  <link rel="stylesheet" href="styles.css?v=4.0">
 </head>
 <body>
 
@@ -95,6 +95,18 @@
 
     </div>
   </header>
+
+  <!-- Mobile Horizontal Quick Nav Strip (Directly visible on mobile screens!) -->
+  <nav class="mobile-subnav-strip" aria-label="Mobile Quick Navigation">
+    <div class="mobile-subnav-inner">
+      <a href="#hero" class="mobile-subnav-link active">Home</a>
+      <a href="#bestsellers" class="mobile-subnav-link" onclick="filterCategory('all')">Services ▾</a>
+      <a href="#categories" class="mobile-subnav-link">Bridal Gallery</a>
+      <a href="#our-story" class="mobile-subnav-link">About Areena</a>
+      <a href="#testimonials" class="mobile-subnav-link">Client Reviews</a>
+      <a href="#footer" class="mobile-subnav-link">Contact</a>
+    </div>
+  </nav>
 
   <!-- Ambient Sound Controller -->
   <div class="audio-control-bar">
@@ -869,11 +881,11 @@
         </a>
       </div>
 
-      <!-- Navigation Links List -->
+      <!-- Navigation Links List (Matching Navbar Options) -->
       <nav class="mobile-menu-list">
         <div class="mobile-menu-item">
           <a href="#hero" class="mobile-menu-link active" onclick="closeMobileNav()">
-            <span class="link-label"><i data-lucide="home"></i> Home Sanctuary</span>
+            <span class="link-label">Home</span>
             <i data-lucide="chevron-right" class="arrow-icon"></i>
           </a>
         </div>
@@ -881,7 +893,7 @@
         <!-- Accordion for Services -->
         <div class="mobile-menu-item has-sub">
           <button class="mobile-menu-link mobile-accordion-trigger" onclick="toggleMobileAccordion('servicesSubmenu', this)">
-            <span class="link-label"><i data-lucide="sparkles"></i> Parlour Services</span>
+            <span class="link-label">Services</span>
             <i data-lucide="chevron-down" class="accordion-chevron"></i>
           </button>
           <div class="mobile-submenu" id="servicesSubmenu">
@@ -896,28 +908,28 @@
 
         <div class="mobile-menu-item">
           <a href="#categories" class="mobile-menu-link" onclick="closeMobileNav()">
-            <span class="link-label"><i data-lucide="camera"></i> Bridal Photoshoot Gallery</span>
+            <span class="link-label">Bridal Gallery</span>
             <i data-lucide="chevron-right" class="arrow-icon"></i>
           </a>
         </div>
 
         <div class="mobile-menu-item">
           <a href="#our-story" class="mobile-menu-link" onclick="closeMobileNav()">
-            <span class="link-label"><i data-lucide="award"></i> About Areena &amp; Award 2024</span>
+            <span class="link-label">About Areena</span>
             <i data-lucide="chevron-right" class="arrow-icon"></i>
           </a>
         </div>
 
         <div class="mobile-menu-item">
           <a href="#testimonials" class="mobile-menu-link" onclick="closeMobileNav()">
-            <span class="link-label"><i data-lucide="heart"></i> Real Brides Reviews</span>
+            <span class="link-label">Client Reviews</span>
             <i data-lucide="chevron-right" class="arrow-icon"></i>
           </a>
         </div>
 
         <div class="mobile-menu-item">
           <a href="#footer" class="mobile-menu-link" onclick="closeMobileNav()">
-            <span class="link-label"><i data-lucide="map-pin"></i> Salon Location &amp; Hours</span>
+            <span class="link-label">Contact</span>
             <i data-lucide="chevron-right" class="arrow-icon"></i>
           </a>
         </div>
@@ -1020,6 +1032,6 @@
   <!-- Toast Message -->
   <div class="toast-message" id="toastMessage"></div>
 
-  <script src="script.js?v=3.0"></script>
+  <script src="script.js?v=4.0"></script>
 </body>
 </html>
