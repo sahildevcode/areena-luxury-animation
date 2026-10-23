@@ -15,7 +15,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3.0">
 </head>
 <body>
 
@@ -39,6 +39,13 @@
   <header class="site-header" id="mainHeader">
     <div class="header-inner">
       
+      <!-- Mobile Hamburger Button (Always visible on mobile/tablet) -->
+      <button class="hamburger-btn" id="hamburgerBtn" onclick="openMobileNav()" aria-label="Open Mobile Navigation" title="Open Navigation Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
       <!-- Brand Logo -->
       <a href="#hero" class="brand-logo magnetic-target">
         <span class="logo-text">AREENA BEAUTY LOOKS</span>
@@ -69,25 +76,20 @@
         </ul>
       </nav>
 
-      <!-- Action Icons: Search, Account, Wishlist, Appointment Bag, Mobile Menu -->
+      <!-- Action Icons: Search, Account, Wishlist, Appointment Bag -->
       <div class="header-actions">
         <button class="header-icon-btn magnetic-target" id="searchTriggerBtn" title="Search services">
           <i data-lucide="search"></i>
         </button>
-        <button class="header-icon-btn magnetic-target" id="accountTriggerBtn" title="My Account">
+        <button class="header-icon-btn magnetic-target desktop-only-action" id="accountTriggerBtn" title="My Account">
           <i data-lucide="user"></i>
         </button>
-        <button class="header-icon-btn magnetic-target" id="wishlistTriggerBtn" title="Saved Looks">
+        <button class="header-icon-btn magnetic-target desktop-only-action" id="wishlistTriggerBtn" title="Saved Looks">
           <i data-lucide="heart"></i>
         </button>
         <button class="cart-btn magnetic-target" id="cartTriggerBtn" title="Selected Services">
           <i data-lucide="calendar"></i>
           <span class="cart-count-badge" id="cartCount">0</span>
-        </button>
-        <button class="hamburger-btn" id="hamburgerBtn" onclick="openMobileNav()" aria-label="Open Mobile Navigation" title="Open Navigation Menu">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
         </button>
       </div>
 
@@ -919,6 +921,20 @@
             <i data-lucide="chevron-right" class="arrow-icon"></i>
           </a>
         </div>
+
+        <div class="mobile-menu-item">
+          <a href="#wishlist" class="mobile-menu-link" onclick="closeMobileNav(); showToast('Saved treatments view — you have 3 rituals saved! ♡'); return false;">
+            <span class="link-label"><i data-lucide="heart"></i> Saved Looks &amp; Wishlist</span>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+          </a>
+        </div>
+
+        <div class="mobile-menu-item">
+          <a href="#account" class="mobile-menu-link" onclick="closeMobileNav(); showToast('Welcome to Areena VIP Beauty Club ♡ Logged in as Member'); return false;">
+            <span class="link-label"><i data-lucide="user"></i> VIP Membership Account</span>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+          </a>
+        </div>
       </nav>
 
       <!-- Timing & Direct Contact Card -->
@@ -1004,6 +1020,6 @@
   <!-- Toast Message -->
   <div class="toast-message" id="toastMessage"></div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3.0"></script>
 </body>
 </html>

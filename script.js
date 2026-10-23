@@ -500,6 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toastMessage.classList.remove('show');
     }, 3200);
   }
+  window.showToast = showToast;
 
   // ==========================================================================
   // 9. Mobile Side Navbar Drawer Controller
