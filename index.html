@@ -69,7 +69,7 @@
         </ul>
       </nav>
 
-      <!-- Action Icons: Search, Account, Wishlist, Appointment Bag -->
+      <!-- Action Icons: Search, Account, Wishlist, Appointment Bag, Mobile Menu -->
       <div class="header-actions">
         <button class="header-icon-btn magnetic-target" id="searchTriggerBtn" title="Search services">
           <i data-lucide="search"></i>
@@ -83,6 +83,11 @@
         <button class="cart-btn magnetic-target" id="cartTriggerBtn" title="Selected Services">
           <i data-lucide="calendar"></i>
           <span class="cart-count-badge" id="cartCount">0</span>
+        </button>
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="openMobileNav()" aria-label="Open Mobile Navigation" title="Open Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
         </button>
       </div>
 
@@ -267,12 +272,7 @@
             class="aurelia-model-img"
           />
           
-          <!-- Cursive Callout Badge on Real Work -->
-          <div class="aurelia-cursive-callout">
-            <span class="cursive-line1">Areena</span>
-            <span class="cursive-line2">Signature Glow</span>
-            <span class="cursive-line3">Loved by Brides ♡</span>
-          </div>
+          <!-- Real Bride Image -->
         </div>
       </div>
 
@@ -838,6 +838,105 @@
       </div>
     </div>
   </footer>
+
+  <!-- ==========================================================================
+       MOBILE LUXURY SIDE NAVBAR DRAWER
+       ========================================================================== -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <div class="mobile-nav-header">
+      <div class="mobile-nav-brand">
+        <span class="mobile-brand-title">AREENA BEAUTY LOOKS</span>
+        <span class="mobile-brand-subtitle">LUXURY SALON &amp; BRIDAL STUDIO</span>
+      </div>
+      <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close Navigation" title="Close Menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <div class="mobile-nav-body">
+      <!-- Quick Actions Strip inside Drawer -->
+      <div class="mobile-quick-actions">
+        <button onclick="closeMobileNav(); openCartDrawer();" class="mobile-quick-btn">
+          <i data-lucide="calendar"></i>
+          <span>Appointments (<strong id="mobileCartCount">0</strong>)</span>
+        </button>
+        <a href="tel:+919876543210" class="mobile-quick-btn highlight">
+          <i data-lucide="phone-call"></i>
+          <span>Call Salon</span>
+        </a>
+      </div>
+
+      <!-- Navigation Links List -->
+      <nav class="mobile-menu-list">
+        <div class="mobile-menu-item">
+          <a href="#hero" class="mobile-menu-link active" onclick="closeMobileNav()">
+            <span class="link-label"><i data-lucide="home"></i> Home Sanctuary</span>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+          </a>
+        </div>
+
+        <!-- Accordion for Services -->
+        <div class="mobile-menu-item has-sub">
+          <button class="mobile-menu-link mobile-accordion-trigger" onclick="toggleMobileAccordion('servicesSubmenu', this)">
+            <span class="link-label"><i data-lucide="sparkles"></i> Parlour Services</span>
+            <i data-lucide="chevron-down" class="accordion-chevron"></i>
+          </button>
+          <div class="mobile-submenu" id="servicesSubmenu">
+            <a href="#bestsellers" onclick="filterCategory('all'); closeMobileNav();">All Salon Services</a>
+            <a href="#bestsellers" onclick="filterCategory('bridal'); closeMobileNav();">Bridal HD &amp; Reception Makeup</a>
+            <a href="#bestsellers" onclick="filterCategory('hair'); closeMobileNav();">Bridal Hair &amp; Floral Bun</a>
+            <a href="#bestsellers" onclick="filterCategory('facials'); closeMobileNav();">Hydra Facials &amp; Cleanup</a>
+            <a href="#bestsellers" onclick="filterCategory('nails'); closeMobileNav();">Nail Extensions &amp; Pedicure</a>
+            <a href="#special-moments" onclick="closeMobileNav();">Pre-Bridal Packages</a>
+          </div>
+        </div>
+
+        <div class="mobile-menu-item">
+          <a href="#categories" class="mobile-menu-link" onclick="closeMobileNav()">
+            <span class="link-label"><i data-lucide="camera"></i> Bridal Photoshoot Gallery</span>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+          </a>
+        </div>
+
+        <div class="mobile-menu-item">
+          <a href="#our-story" class="mobile-menu-link" onclick="closeMobileNav()">
+            <span class="link-label"><i data-lucide="award"></i> About Areena &amp; Award 2024</span>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+          </a>
+        </div>
+
+        <div class="mobile-menu-item">
+          <a href="#testimonials" class="mobile-menu-link" onclick="closeMobileNav()">
+            <span class="link-label"><i data-lucide="heart"></i> Real Brides Reviews</span>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+          </a>
+        </div>
+
+        <div class="mobile-menu-item">
+          <a href="#footer" class="mobile-menu-link" onclick="closeMobileNav()">
+            <span class="link-label"><i data-lucide="map-pin"></i> Salon Location &amp; Hours</span>
+            <i data-lucide="chevron-right" class="arrow-icon"></i>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Timing & Direct Contact Card -->
+      <div class="mobile-nav-contact-card">
+        <div class="salon-hours-badge">
+          <i data-lucide="clock"></i>
+          <div>
+            <strong>Open Everyday</strong>
+            <p>10:00 AM – 08:30 PM</p>
+          </div>
+        </div>
+        <a href="https://wa.me/919876543210?text=Hello%20Areena%20Beauty%20Looks,%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" class="mobile-whatsapp-btn">
+          <i data-lucide="message-circle"></i>
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </aside>
 
   <!-- ==========================================================================
        INTERACTIVE APPOINTMENT SLIDE-OVER DRAWER

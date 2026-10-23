@@ -294,6 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (cartCount) cartCount.textContent = totalCount;
     if (cartDrawerBadge) cartDrawerBadge.textContent = totalCount;
+    const mobileCartCount = document.getElementById('mobileCartCount');
+    if (mobileCartCount) mobileCartCount.textContent = totalCount;
     if (cartSubtotal) cartSubtotal.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
 
     localStorage.setItem('areena_beauty_services', JSON.stringify(cart));
@@ -498,4 +500,50 @@ document.addEventListener('DOMContentLoaded', () => {
       toastMessage.classList.remove('show');
     }, 3200);
   }
+
+  // ==========================================================================
+  // 9. Mobile Side Navbar Drawer Controller
+  // ==========================================================================
+  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+
+  window.openMobileNav = function() {
+    if (mobileNavDrawer && mobileNavBackdrop) {
+      mobileNavDrawer.classList.add('active');
+      mobileNavBackdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+  };
+
+  window.closeMobileNav = function() {
+    if (mobileNavDrawer && mobileNavBackdrop) {
+      mobileNavDrawer.classList.remove('active');
+      mobileNavBackdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.toggleMobileAccordion = function(menuId, triggerBtn) {
+    const submenu = document.getElementById(menuId);
+    if (!submenu) return;
+    const isOpen = submenu.classList.contains('is-open');
+    if (isOpen) {
+      submenu.classList.remove('is-open');
+      if (triggerBtn) triggerBtn.classList.remove('is-active');
+    } else {
+      submenu.classList.add('is-open');
+      if (triggerBtn) triggerBtn.classList.add('is-active');
+    }
+  };
+
+  // Close mobile drawer on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      window.closeMobileNav();
+      window.closeCartDrawer();
+    }
+  });
 });
